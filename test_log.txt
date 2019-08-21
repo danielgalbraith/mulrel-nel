@@ -1,0 +1,114 @@
+load conll at data/generated/test_train_data/
+load csv
+process coref
+load conll
+create model
+word voca size 492408
+snd word voca size 60862
+{'args': Namespace(ctx_window=100, dev_f1_change_lr=0.915, df=0.5, dropout_rate=0.3, eval_after_n_epochs=5, hid_dims=100, keep_ctx_ent=4, keep_p_e_m=4, learning_rate=0.0001, margin=0.01, mode='eval', model_path='', mulrel_type='ment-norm', n_cands_before_rank=30, n_epochs=200, n_loops=10, n_not_inc=10, n_rels=5, prerank_ctx_window=50, print_incorrect=False, print_rel=False, snd_local_ctx_window=6, tok_top_n=25),
+ 'df': 0.5,
+ 'dr': 0.3,
+ 'emb_dims': 300,
+ 'entity_embeddings': array([[ 0.06      , -0.075     ,  0.014     , ...,  0.083     ,
+        -0.02      , -0.031     ],
+       [-0.1       ,  0.058     ,  0.041     , ..., -0.075     ,
+         0.089     , -0.047     ],
+       [ 0.014     ,  0.062     ,  0.028     , ..., -0.026     ,
+         0.06      , -0.068     ],
+       ...,
+       [ 0.014     ,  0.018     , -0.025     , ...,  0.019     ,
+        -0.043     , -0.057     ],
+       [ 0.001     , -0.044     ,  0.149     , ...,  0.037     ,
+         0.005     ,  0.02      ],
+       [-0.00758579, -0.00171364,  0.03234197, ...,  0.01505074,
+        -0.02316106, -0.04260057]]),
+ 'entity_voca': <nel.vocabulary.Vocabulary object at 0x7f766d1c3b38>,
+ 'freeze_embs': True,
+ 'hid_dims': 100,
+ 'margin': 0.01,
+ 'mulrel_type': 'ment-norm',
+ 'n_loops': 10,
+ 'n_rels': 5,
+ 'snd_word_embeddings': array([[ 0.2587    ,  0.23414   ,  0.17771   , ..., -0.42938   ,
+        -0.48392   ,  0.60828   ],
+       [ 0.15139   , -0.20729   , -0.3755    , ...,  0.1377    ,
+         0.075059  , -0.27191   ],
+       [ 0.25826   ,  0.23759   ,  0.21491   , ...,  0.6305    ,
+         0.04818   , -0.45594   ],
+       ...,
+       [ 0.82401   , -0.15707   ,  0.29586   , ...,  0.44211   ,
+        -0.17721   ,  0.13085   ],
+       [ 1.1634    , -1.1471    , -0.53949   , ...,  0.41932   ,
+         0.99353   , -0.59911   ],
+       [ 0.22418612, -0.28881808,  0.13854355, ...,  0.19310516,
+        -0.07767657, -0.14481587]]),
+ 'snd_word_voca': <nel.vocabulary.Vocabulary object at 0x7f76fb1cdfd0>,
+ 'tok_top_n': 25,
+ 'word_embeddings': array([[ 8.00780000e-02,  1.04980000e-01,  4.98050000e-02, ...,
+         3.66200000e-03,  4.76070000e-02, -6.88480000e-02],
+       [ 7.03120000e-02,  8.69140000e-02,  8.78910000e-02, ...,
+        -4.76070000e-02,  1.44650000e-02, -6.25000000e-02],
+       [ 2.60010000e-02, -1.89200000e-03,  1.85547000e-01, ...,
+        -1.21582000e-01,  2.21680000e-01, -2.19730000e-02],
+       ...,
+       [ 2.81250000e-01, -2.13620000e-02,  1.72120000e-02, ...,
+         4.02830000e-02,  2.14844000e-01,  2.00195000e-01],
+       [ 1.86770000e-02,  1.28906000e-01,  5.17580000e-02, ...,
+         2.25830000e-02,  2.15820000e-01,  3.36910000e-02],
+       [-2.25727598e-04, -1.01302859e-03, -1.04770562e-02, ...,
+        -2.76348449e-02,  6.10916865e-02,  3.80460705e-02]]),
+ 'word_voca': <nel.vocabulary.Vocabulary object at 0x7f76707df6a0>}
+--- create model ---
+prerank model
+main model
+try loading model from 
+---------------- model config -----------------
+freeze_embs True
+max_dist 1000
+freeze_local False
+oracle False
+emb_dims 300
+tok_top_n 25
+first_head_uniform False
+_coh_ctx_vecs None
+n_loops 10
+ent_ent_comp bilinear
+ew_hid_dims 300
+margin 0.01
+ent_top_n 1000
+use_local_only False
+n_rels 5
+use_stargmax False
+training True
+dr 0.3
+mode ment-norm
+df 0.5
+use_local True
+hid_dims 100
+ctx_comp bow
+use_pad_ent True
+-----------------------------------------------
+277
+recall 0.9730745147150908
+aida-A #dev docs 218
+114
+108
+recall 0.9828316610925306
+aida-B #dev docs 232
+recall 0.9847560975609756
+msnbc #dev docs 20
+recall 0.9436038514442916
+aquaint #dev docs 50
+recall 0.9066147859922179
+ace2004 #dev docs 35
+recall 0.9169804554419939
+clueweb #dev docs 320
+recall 0.923418095801301
+wikipedia #dev docs 318
+aida-A micro F1: 0.9214069512576976
+aida-B micro F1: 0.9328874024526198
+msnbc micro F1: 0.938026013771997
+aquaint micro F1: 0.8825174825174825
+ace2004 micro F1: 0.9054325955734406
+clueweb micro F1: 0.7775781530722242
+wikipedia micro F1: 0.777013534501886
